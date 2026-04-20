@@ -80,7 +80,7 @@ const education = [
   },
   {
     school: "Yuying Secondary School",
-    title: "N Level and O Level",
+    title: "GCSE N Level and O Level",
     period: "2016 - 2020",
   },
 ];
