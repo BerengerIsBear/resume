@@ -1,3 +1,4 @@
+import { useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -10,15 +11,22 @@ import {
   Wrench,
   Code2,
   Sparkles,
+  X,
 } from "lucide-react";
-import profile from "./assets/Berenger.jpg";
+import profile from "./assets/me.jpg";
 import "./App.css";
 
-const skills = {
-  "Programming Languages": ["Java", "Python", "JavaScript"],
+const skills: Record<string, string[]> = {
+  "Programming Languages": [
+    "JavaScript",
+    "TypeScript",
+    "Java",
+    "Python",
+    "PHP",
+  ],
   "Frontend Development": ["React", "HTML", "CSS", "Vite"],
   "Backend Development": ["Node.js", "Express.js", "PHP"],
-  "Database Systems": ["MongoDB", "SQL", "Supabase"],
+  "Database Systems": ["MongoDB", "PostgreSQL", "SQL", "Supabase"],
   "Tools & Technologies": [
     "Git",
     "GitHub",
@@ -35,10 +43,10 @@ const experiences = [
     company: "Straightups Barworks",
     period: "2025 - Present",
     points: [
-      "Delivered consistent and high-quality cocktails in a fast-paced, high-volume service environment where speed and accuracy were critical.",
-      "Managed multiple orders simultaneously while maintaining attention to detail and consistency in preparation.",
-      "Developed strong process discipline, time management, and the ability to perform under pressure without compromising quality.",
-      "Handled customer interactions directly, ensuring a reliable and positive experience even during peak hours.",
+      "Delivered quality cocktails quickly in a fast-paced bar environment.",
+      "Managed multiple orders while staying accurate and consistent.",
+      "Built strong discipline, time management, and composure under pressure.",
+      "Handled customer interactions confidently, even during peak hours.",
     ],
   },
   {
@@ -46,10 +54,10 @@ const experiences = [
     company: "Uniqlo",
     period: "Jun 2022 - Jul 2022",
     points: [
-      "Handled customer service, floor operations, and stock management in a high-traffic retail environment.",
-      "Maintained efficiency and organisation during peak periods while ensuring service standards and operational processes were followed.",
-      "Developed adaptability and problem-solving skills when dealing with customer requests and operational challenges.",
-      "Demonstrated reliability, discipline, and consistency in daily responsibilities within a structured retail environment.",
+      "Supported customer service, floor operations, and stock handling in a busy retail setting.",
+      "Worked efficiently during peak periods while maintaining service standards.",
+      "Adapted quickly to customer needs and day-to-day operational challenges.",
+      "Showed reliability, discipline, and consistency in daily responsibilities.",
     ],
   },
 ];
@@ -100,17 +108,18 @@ const whatIBring = [
   "Able to translate business requirements into structured technical solutions that are practical and maintainable.",
   "Comfortable working independently while also contributing effectively in team-based environments.",
   "Focused on building systems that are not only functional, but also reliable, usable, and scalable in practice.",
+  "I hold myself to high standards, value accountability, and strive to be someone teammates can rely on.",
 ];
 
 const project = {
   name: "Final Year Project — Full-Stack Article Publishing Platform",
   link: "https://father-yacht.vercel.app/",
   summary:
-    "Led a 6-person team to design and build a full-stack article publishing platform from scratch using the MERN stack, with a strong focus on usability, performance, and system reliability. The platform was designed to support content creation, moderation, and management workflows while providing a secure and structured user experience.",
+    "Built a full-stack article publishing platform designed to support content creation, moderation, and management workflows in a secure and structured way.",
   bullets: [
-    "Designed and implemented backend architecture using MongoDB, including structured APIs, secure request handling, and data organisation.",
-    "Built authentication and authorization systems using JWT and role-based access control to manage different levels of user permissions.",
-    "Designed role-based access control to allow registered users to access additional features based on their permissions, improving both system security and user experience.",
+    "Developed an article publishing platform that allows registered users to create and publish articles, enabling them to share content and ideas with a wider audience.",
+    "Built authentication and role-based access control so registered users can access additional features based on their permissions.",
+    "Designed and implemented backend architecture using MongoDB, including structured APIs, secure request handling, and organised data flow.",
     "Developed responsive frontend interfaces with structured navigation, search functionality, dashboards, and administrative tools.",
     "Integrated AI-powered features using Gemini API, including summarisation, translation, content moderation, and fact-checking.",
     "Worked closely with team members to manage Git workflows, resolve merge conflicts, and maintain code consistency across the project.",
@@ -120,6 +129,8 @@ const project = {
 };
 
 function App() {
+  const [isImageOpen, setIsImageOpen] = useState(false);
+
   return (
     <div className="site-shell">
       <header className="topbar">
@@ -148,10 +159,12 @@ function App() {
             className="hero-left"
           >
             <span className="pill">Business Information Systems Graduate</span>
+
             <h2 className="hero-title">
-              I build practical web systems that turn real business needs into
-              clean, reliable solutions.
+              I design and build web applications that solve real-world problems
+              in a clean and reliable way.
             </h2>
+
             <p className="hero-text">
               I focus on creating applications that are not only technically
               sound, but also usable, scalable, and meaningful in real-world
@@ -180,8 +193,14 @@ function App() {
                 <Mail size={16} /> berengerngan@gmail.com
               </span>
               <span>
-                <Phone size={16} /> +65 98594842
+                <Phone size={16} /> +65 9859 4842
               </span>
+              <a href="YOUR_LINKEDIN_URL" target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
+              <a href="YOUR_GITHUB_URL" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
             </div>
           </motion.div>
 
@@ -191,24 +210,14 @@ function App() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <div className="avatar-box">
+            <button
+              type="button"
+              className="avatar-box avatar-button"
+              onClick={() => setIsImageOpen(true)}
+              aria-label="Open profile image"
+            >
               <img src={profile} alt="Berenger Ngan" />
-            </div>
-
-            <p className="small-label">Core strengths</p>
-
-            <div className="stack-list">
-              {[
-                "Full-stack web development",
-                "Backend architecture and authentication",
-                "Team leadership and coordination",
-                "Fast learning and practical problem solving",
-              ].map((item) => (
-                <div key={item} className="soft-card">
-                  {item}
-                </div>
-              ))}
-            </div>
+            </button>
           </motion.div>
         </section>
 
@@ -218,34 +227,36 @@ function App() {
             <div className="card">
               <p>
                 I’m a Business Information Systems graduate with hands-on
-                experience building full-stack web applications from concept to
+                experience building full-stack web applications from idea to
                 deployment.
               </p>
               <p>
-                During my Final Year Project, I led a team of six and took
-                ownership across backend architecture, frontend development,
-                authentication, and deployment. Working under tight timelines, I
-                learned how to structure development workflows, manage team
-                responsibilities, and turn complex requirements into working
-                systems.
+                During my final year project, I worked closely with a team to
+                design and build a complete system, covering both backend and
+                frontend development. This experience helped me understand how
+                to structure projects, manage workflows, and turn requirements
+                into working features.
               </p>
               <p>
-                Beyond just building features, I focus on understanding how a
-                system will actually be used in practice. I enjoy translating
-                business requirements into technical solutions that are reliable,
-                scalable, and practical in real-world operations.
+                I enjoy building systems that are not just functional, but
+                actually useful in real-world situations. I focus on writing
+                clean code, keeping things simple, and ensuring the final
+                product is reliable.
               </p>
               <p>
-                I am comfortable learning new tools quickly, adapting to
-                unfamiliar technologies, and taking responsibility to ensure work
-                is delivered properly. I value consistency, ownership, and
-                building things that are useful, not just functional.
+                I’m always interested in expanding my abilities, and I’m open
+                to roles across both business and IT.
+              </p>
+              <p>
+                I’m motivated to continuously improve and contribute through
+                practical, hands-on work.
               </p>
             </div>
           </section>
 
           <section id="project" className="section-block wide-card">
             <SectionTitle icon={<Code2 size={20} />} title="Featured Project" />
+
             <div className="card">
               <div className="card-head">
                 <div>
@@ -275,15 +286,6 @@ function App() {
 
           <section id="skills" className="section-block">
             <SectionTitle icon={<Wrench size={20} />} title="Technical Skills" />
-            <div className="card intro-card">
-              <p>
-                I have experience working across both frontend and backend
-                systems, with exposure to building full-stack applications,
-                managing databases, and integrating APIs into practical
-                workflows.
-              </p>
-            </div>
-
             <div className="cards-gap">
               {Object.entries(skills).map(([group, items]) => (
                 <div key={group} className="card">
@@ -374,10 +376,7 @@ function App() {
           </section>
 
           <section className="section-block wide-card">
-            <SectionTitle
-              icon={<Sparkles size={20} />}
-              title="What I Bring"
-            />
+            <SectionTitle icon={<Sparkles size={20} />} title="What I Bring" />
             <div className="card">
               <div className="grid-list">
                 {whatIBring.map((item) => (
@@ -401,9 +400,34 @@ function App() {
             <a href="mailto:berengerngan@gmail.com">berengerngan@gmail.com</a>
             <a href="tel:+6598594842">+65 9859 4842</a>
             <span>Singapore</span>
+            <a href="https://www.linkedin.com/in/berenger-ngan-019522277/" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+            <a href="https://github.com/BerengerIsBear" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
           </div>
         </section>
       </main>
+
+      {isImageOpen && (
+        <div className="image-modal" onClick={() => setIsImageOpen(false)}>
+          <div
+            className="image-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="image-modal-close"
+              onClick={() => setIsImageOpen(false)}
+              aria-label="Close image preview"
+            >
+              <X size={20} />
+            </button>
+            <img src={profile} alt="Berenger Ngan preview" />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -412,7 +436,7 @@ function SectionTitle({
   icon,
   title,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   title: string;
 }) {
   return (
