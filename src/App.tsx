@@ -43,10 +43,9 @@ const experiences = [
     company: "Straightups Barworks",
     period: "2025 - Present",
     points: [
-      "Delivered quality cocktails quickly in a fast-paced bar environment.",
-      "Managed multiple orders while staying accurate and consistent.",
-      "Built strong discipline, time management, and composure under pressure.",
-      "Handled customer interactions confidently, even during peak hours.",
+      "Delivered high-quality cocktails quickly in a fast-paced bar environment while maintaining consistency.",
+      "Managed multiple orders while staying accurate and detail-oriented.",
+      "Built discipline, time management, and composure under pressure while handling customer interactions during peak hours.",
     ],
   },
   {
@@ -54,10 +53,9 @@ const experiences = [
     company: "Uniqlo",
     period: "Jun 2022 - Jul 2022",
     points: [
-      "Supported customer service, floor operations, and stock handling in a busy retail setting.",
-      "Worked efficiently during peak periods while maintaining service standards.",
-      "Adapted quickly to customer needs and day-to-day operational challenges.",
-      "Showed reliability, discipline, and consistency in daily responsibilities.",
+      "Supported customer service, floor operations, and stock handling in a busy retail environment.",
+      "Worked efficiently during peak periods while maintaining service standards and operational flow.",
+      "Demonstrated reliability, adaptability, and consistency in handling customer needs and daily responsibilities.",
     ],
   },
 ];
@@ -103,12 +101,9 @@ const sideProjects = [
 ];
 
 const whatIBring = [
-  "Strong ability to learn new technologies quickly and apply them in practical, real-world situations.",
-  "Ownership mindset when building and delivering systems, with a focus on completing work properly and responsibly.",
-  "Able to translate business requirements into structured technical solutions that are practical and maintainable.",
-  "Comfortable working independently while also contributing effectively in team-based environments.",
-  "Focused on building systems that are not only functional, but also reliable, usable, and scalable in practice.",
-  "I hold myself to high standards, value accountability, and strive to be someone teammates can rely on.",
+  "Quick to learn and apply new technologies to build practical, real-world solutions.",
+  "Take ownership in delivering reliable, maintainable, and scalable systems.",
+  "Work effectively both independently and in teams, with strong accountability and high standards.",
 ];
 
 const project = {
