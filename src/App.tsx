@@ -190,10 +190,10 @@ function App() {
               <span>
                 <Phone size={16} /> +65 9859 4842
               </span>
-              <a href="YOUR_LINKEDIN_URL" target="_blank" rel="noreferrer">
+              <a href="https://www.linkedin.com/in/berenger-ngan-019522277/" target="_blank" rel="noreferrer">
                 LinkedIn
               </a>
-              <a href="YOUR_GITHUB_URL" target="_blank" rel="noreferrer">
+              <a href="https://github.com/BerengerIsBear" target="_blank" rel="noreferrer">
                 GitHub
               </a>
             </div>
